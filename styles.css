@@ -1,0 +1,232 @@
+/* Estilos básicos para la página */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100vh;
+  margin: 0;
+}
+
+/* Contenedor principal que contiene el tablero y el panel lateral */
+#game-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+  width: 100%;
+  max-width: 1200px; /* Limitar el ancho máximo */
+}
+
+/* Estilos del tablero */
+#game-board-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+#board {
+  display: grid;
+  grid-template-columns: repeat(10, 85px); /* 10 columnas */
+  grid-template-rows: repeat(10, 60px); /* 10 filas */
+  gap: 2px;
+  margin-right: 20px;
+  position: relative;
+  border: 3px solid #333;
+  background-color: #bbb;
+  border-radius: 10px;
+}
+
+/* Estilo para cada celda del tablero */
+#board div {
+  width: 85px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 14px;
+  color: #fff;
+  border: 1px solid #ccc;
+  position: relative;
+}
+
+/* Estilos de las casillas del tablero */
+#board div.yellow {
+  background-color: orange;
+}
+
+#board div.black {
+  background-color: black;
+}
+
+/* Estilo de los números dentro de las casillas */
+#board div span {
+  font-size: 12px;
+  color: white;
+  font-weight: bold;
+}
+
+/* Estilos de las fichas de los jugadores */
+.player {
+  width: 50px;
+  height: 50px;
+  position: absolute; /* Posición absoluta para poder moverla libremente */
+  border-radius: 50%;
+  border: 2px solid #333; /* Bordes de las fichas */
+  transition: top 0.5s ease, left 0.5s ease; /* Transición para el movimiento de las fichas */
+}
+
+/* Colores de las fichas */
+.player-red {
+  background-color: #FFFFFF;
+}
+
+.player-blue {
+  background-color: blue;
+}
+
+/* Animación de salto (cuando las fichas se mueven) */
+@keyframes jump {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px); /* La ficha sube */
+  }
+  100% {
+    transform: translateY(0); /* La ficha baja de nuevo */
+  }
+}
+
+/* Estilos del dado */
+#dice-container {
+  text-align: center;
+  font-size: 24px;
+  padding: 20px;
+  border: 2px solid #4CAF50;
+  border-radius: 10px;
+  background-color: #e0e0e0;
+  position: relative;
+  display: inline-block;
+}
+
+.dice {
+  font-size: 50px;
+  font-weight: bold;
+  padding: 20px;
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  display: inline-block;
+  cursor: pointer;
+  transition: transform 0.5s ease;
+}
+
+.dice-rolling {
+  animation: rollDiceAnimation 1s ease-in-out; /* Duración de la animación */
+}
+
+/* Animación de rotación del dado */
+@keyframes rollDiceAnimation {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(90deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  75% {
+    transform: rotate(270deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Panel lateral para la información del juego */
+#side-panel {
+  width: 300px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f0f0f0;
+  border: 2px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo de la información sobre el turno */
+#player-turn {
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+#question-box {
+  margin-top: 20px;
+}
+
+#answer-box {
+  margin-top: 10px;
+}
+
+#result {
+  margin-top: 10px;
+  font-weight: bold;
+  color: green;
+}
+
+#submit-answer {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#submit-answer:hover {
+  background-color: #2980b9;
+}
+
+/* Botón para tirar el dado */
+#roll-dice {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#roll-dice:hover {
+  background-color: #45a049;
+}
+/* Estilo del mensaje de felicitación */
+#winner-message {
+  font-size: 24px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+#winner-message button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#winner-message button:hover {
+  background-color: #2980b9;
+}

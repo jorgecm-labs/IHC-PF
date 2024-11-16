@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serpientes y Escaleras - Matemáticas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="game-board-container">
+            <div id="board"></div> <!-- Tablero de Serpientes y Escaleras -->
+        </div>
+
+        <div id="side-panel">
+            <p id="player-turn">Turno del Jugador 1</p>
+            
+            <div id="dice-container">
+                <div id="dice" class="dice">1</div>
+                <button id="roll-dice">Tirar Dado</button>
+            </div>
+
+            <div id="question-box"></div>
+
+            <div id="answer-box">
+                <input type="number" id="answer" placeholder="Tu respuesta" />
+                <button id="submit-answer">Comprobar</button>
+            </div>
+
+            <div id="result"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
