@@ -188,7 +188,7 @@ function rollDice() {
   const diceRoll = Math.floor(Math.random() * 6) + 1;
 
   let currentRoll = 1; // Empezamos con un número inicial (puede ser cualquier número entre 1 y 6)
-  const totalRolls = 30; // Número de "cambios" que vamos a hacer antes de detener el dado en el número final
+  const totalRolls = 20; // Número de "cambios" que vamos a hacer antes de detener el dado en el número final
 
   // Función para cambiar el número del dado varias veces antes de detenerse
   let rollCount = 0;  // Contador para llevar el control de cuántas veces hemos actualizado el número
