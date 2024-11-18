@@ -104,7 +104,6 @@ function generateMathQuestion(diceRoll) {
   }, 500); // Espera el tiempo de la animación de las fichas
 }
 
-
 // Función para verificar la respuesta
 function checkAnswer() {
   const userAnswer = parseInt(document.getElementById('answer').value);
@@ -185,12 +184,29 @@ function rollDice() {
   // Ahora aplicamos la clase dice-rolling para iniciar la animación
   diceElement.classList.add('dice-rolling');
 
-  setTimeout(() => {
-    const diceRoll = Math.floor(Math.random() * 6) + 1;
-    diceElement.textContent = diceRoll;
-    generateMathQuestion(diceRoll);
-  }, 1000); // Duración de la animación, debe coincidir con la duración de la animación CSS
+  // Número final del dado que se debe mostrar
+  const diceRoll = Math.floor(Math.random() * 6) + 1;
+
+  let currentRoll = 1; // Empezamos con un número inicial (puede ser cualquier número entre 1 y 6)
+  const totalRolls = 30; // Número de "cambios" que vamos a hacer antes de detener el dado en el número final
+
+  // Función para cambiar el número del dado varias veces antes de detenerse
+  let rollCount = 0;  // Contador para llevar el control de cuántas veces hemos actualizado el número
+  let rollInterval = setInterval(() => {
+    // Cambiar el número mostrado de forma aleatoria
+    currentRoll = Math.floor(Math.random() * 6) + 1;
+    diceElement.textContent = currentRoll;
+
+    // Detener el intervalo después de haber mostrado el número final
+    rollCount++;
+    if (rollCount >= totalRolls) {
+      clearInterval(rollInterval); // Detenemos el intervalo
+      diceElement.textContent = diceRoll; // Mostrar el número final
+      generateMathQuestion(diceRoll); // Llamamos a la función para generar la pregunta con el número final
+    }
+  }, 50); // Cambiar el número cada 50 milisegundos (ajustable)
 }
+
 
 // Función para mostrar el mensaje de felicitación al ganador
 function showWinnerMessage(player) {
