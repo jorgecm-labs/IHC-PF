@@ -1,12 +1,16 @@
-/* Estilos básicos para la página */
+/* Estilo del fondo de la página */
 body {
   font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
+  background-image: url('jungla.jpg'); /* Reemplaza con la ruta a tu imagen */
+  background-size: cover; /* Asegura que la imagen cubra toda la página */
+  background-position: center; /* Centra la imagen en la pantalla */
   display: flex;
   justify-content: center;
   align-items: flex-start;
   height: 100vh;
   margin: 0;
+  padding: 0;
+  background-attachment: fixed; /* Hace que la imagen de fondo se quede fija al hacer scroll */
 }
 
 /* Contenedor principal que contiene el tablero y el panel lateral */
@@ -14,7 +18,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 20px;
+  padding: 40px;
   width: 100%;
   max-width: 1200px; /* Limitar el ancho máximo */
 }
@@ -88,29 +92,23 @@ body {
   background-color: blue;
 }
 
-/* Animación de salto (cuando las fichas se mueven) */
-@keyframes jump {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px); /* La ficha sube */
-  }
-  100% {
-    transform: translateY(0); /* La ficha baja de nuevo */
-  }
-}
-
 /* Estilos del dado */
 #dice-container {
   text-align: center;
   font-size: 24px;
   padding: 20px;
   border: 2px solid #4CAF50;
-  border-radius: 10px;
+  border-radius: 15px;
   background-color: #e0e0e0;
   position: relative;
   display: inline-block;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  transition: all 0.3s ease;
+}
+
+#dice-container:hover {
+  transform: translateY(-5px); /* Efecto de elevación */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
 }
 
 .dice {
@@ -148,6 +146,7 @@ body {
     transform: rotate(360deg);
   }
 }
+
 /* Estilo del cuadro de respuesta */
 #answer-box {
   width: 100%;
@@ -157,15 +156,15 @@ body {
   align-items: center;
   background-color: #f9f9f9;
   padding: 15px;
-  border-radius: 10px;
+  border-radius: 15px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease-in-out;
+  margin-top: 20px;
 }
 
-/* Estilo del cuadro de respuesta cuando está enfocado */
 #answer-box:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
 }
 
 /* Estilo del input de respuesta */
@@ -201,7 +200,7 @@ body {
 #side-panel {
   width: 300px;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 15px;
   background-color: #f0f0f0;
   border: 2px solid #ccc;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -213,48 +212,6 @@ body {
   margin-top: 10px;
 }
 
-#question-box {
-  margin-top: 20px;
-}
-
-#answer-box {
-  margin-top: 10px;
-}
-
-#result {
-  margin-top: 10px;
-  font-weight: bold;
-  color: green;
-}
-
-#submit-answer {
-  margin-top: 10px;
-  padding: 10px 20px;
-  background-color: #3498db;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-#submit-answer:hover {
-  background-color: #2980b9;
-}
-
-/* Botón para tirar el dado */
-#roll-dice {
-  margin-top: 10px;
-  padding: 10px 20px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-#roll-dice:hover {
-  background-color: #45a049;
-}
 /* Estilo del mensaje de felicitación */
 #winner-message {
   font-size: 24px;
@@ -277,4 +234,19 @@ body {
 
 #winner-message button:hover {
   background-color: #2980b9;
+}
+
+/* Efecto de hover para los botones */
+#submit-answer:hover, #roll-dice:hover {
+  background-color: #2980b9;
+}
+
+#roll-dice {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
