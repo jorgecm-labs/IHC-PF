@@ -148,6 +148,54 @@ body {
     transform: rotate(360deg);
   }
 }
+/* Estilo del cuadro de respuesta */
+#answer-box {
+  width: 100%;
+  max-width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+/* Estilo del cuadro de respuesta cuando está enfocado */
+#answer-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo del input de respuesta */
+#answer {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #3498db;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  transition: border-color 0.3s ease;
+}
+
+/* Estilo del input cuando se enfoca */
+#answer:focus {
+  border-color: #2980b9;
+  outline: none;
+}
+
+/* Estilo del botón de comprobar respuesta */
+#submit-answer {
+  background-color: #3498db;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
 
 /* Panel lateral para la información del juego */
 #side-panel {

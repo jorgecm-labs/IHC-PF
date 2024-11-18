@@ -57,6 +57,7 @@ function updateBoard() {
   document.getElementById('player-turn').textContent = `Turno del Jugador ${currentPlayer + 1}`;
 }
 
+// Función para generar la pregunta matemática
 function generateMathQuestion(diceRoll) {
   const num1 = diceRoll;
   // La dificultad aumenta dependiendo de la posición en el tablero
@@ -65,10 +66,8 @@ function generateMathQuestion(diceRoll) {
 
   // Ajuste de dificultad según la posición en el tablero
   if (playerPosition >= 20) {
-    // Dificultad alta: operaciones con números grandes
     num2 = Math.floor(Math.random() * 50) + 1;
   } else if (playerPosition >= 10) {
-    // Dificultad media: números más grandes y divisiones con decimales
     num2 = Math.floor(Math.random() * 20) + 1;
   }
 
@@ -76,22 +75,18 @@ function generateMathQuestion(diceRoll) {
   const operation = Math.floor(Math.random() * 4);
 
   if (operation === 0) {
-    // Suma
     correctAnswer = num1 + num2;
     currentQuestion = `¿Cuánto es ${num1} + ${num2}?`;
   } else if (operation === 1) {
-    // Resta
     correctAnswer = num1 - num2;
     currentQuestion = `¿Cuánto es ${num1} - ${num2}?`;
   } else if (operation === 2) {
-    // Multiplicación
     correctAnswer = num1 * num2;
     currentQuestion = `¿Cuánto es ${num1} * ${num2}?`;
   } else {
-    // División, asegurando que el resultado sea un número entero
     let divisor = Math.floor(Math.random() * 10) + 1;
 
-    // Asegurarnos de que la división sea exacta (el dividendo debe ser divisible por el divisor)
+    // Asegurarse de que la división sea exacta
     while (num1 % divisor !== 0) {
       divisor = Math.floor(Math.random() * 10) + 1;
     }
@@ -100,9 +95,15 @@ function generateMathQuestion(diceRoll) {
     currentQuestion = `¿Cuánto es ${num1} / ${divisor}?`;
   }
 
-  // Mostrar la pregunta generada
+  // Mostrar la pregunta
   document.getElementById('question-box').textContent = currentQuestion;
+
+  // Mover el foco al campo de respuesta solo después de que se actualicen las posiciones de las fichas
+  setTimeout(() => {
+    document.getElementById('answer').focus();  // Focalizar el campo de respuesta después del movimiento
+  }, 500); // Espera el tiempo de la animación de las fichas
 }
+
 
 // Función para verificar la respuesta
 function checkAnswer() {
@@ -215,6 +216,13 @@ function showWinnerMessage(player) {
     location.reload(); // Recarga la página
   };
 }
+
+// Al presionar Enter, enviar la respuesta automáticamente
+document.getElementById('answer').addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    checkAnswer();
+  }
+});
 
 // Manejar el lanzamiento del dado
 document.getElementById('roll-dice').onclick = rollDice;
